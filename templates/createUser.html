@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createUser</title>
+</head>
+<body>
+    <form method="POST" class="row gx-3 gy-4" enctype="multipart/form-data">
+        {% csrf_token%}
+        <input type="text" name="name" id="name"></input>
+        <input type="password" name="password" id="password"></input>
+        <input name="profile" type="file">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+        <tr>  
+            <th>User</th>  
+            <th>Profile</th> 
+        </tr>  
+        </thead>  
+        <tbody>  
+    {% for u in user %}  
+        <tr>  
+            <td>{{ u.name }}</td>  
+            <td>{{ u.profile }}</td>  
+            <td><img src="/images/{{u.profile}}" alt="my image" width="100" height="100"/></td>  
+            <td>{{  u.id  }}</td>  
+            <td>  
+                <a href="/update/{{ u.id }}/"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a href="/delete/{{ u.id }}/">Delete</a>  
+            </td>  
+        </tr>  
+    {% endfor %}  
+        </tbody>  
+    </table>
+    
+</body>
+</html>

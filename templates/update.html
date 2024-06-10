@@ -1,0 +1,21 @@
+
+
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+</head>  
+<body>  
+<form method="POST" class="post-form" action="/update/{{user.id}}/">  
+        {% csrf_token %}  
+
+        <input type="text" name="name" id="name" value="{{ user.name }}"></input>
+        <input type="password" name="password" id="password"></input>
+        {{user.profile }}
+        <input name="profile" type="file" value ="{{ user.profile }}" >
+
+        <button type="submit">Submit</button>
+</form>  
+</body>  
+</html>  
